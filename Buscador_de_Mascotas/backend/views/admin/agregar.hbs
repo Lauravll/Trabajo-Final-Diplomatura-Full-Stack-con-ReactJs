@@ -1,0 +1,167 @@
+</br>
+<section class="py-5 container formularioRegistro">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <form for="nombre" class="formulario row g-3 " action="/admin/mascotas/agregar" method="post" enctype="multipart/form-data">
+        <h2>Registrar animal perdido</h2>
+
+        <div class="col-md-12 mb-3">
+          <label for="imagen" class="form-label">Selecciona una imagen:</label>
+          <input type="file" class="form-control-file" id="imagen" name="imagen"/>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset class="col-md-12 border p-3 mb-3 tamanio_datos">
+              <div class="row">
+                <div class="col-md-8">
+                  <legend class="h5">Datos del Contacto:</legend>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    Es el Dueño?
+                    <input type="checkbox" name="esDuenio" value="1">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="apellido" class="form-label">Apellido</label>
+                  <input type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" name="email"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="number" class="form-control" id="telefono" placeholder="Telefono" name="telefono"/>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label for="provincia" class="form-label">Provincia</label>
+                <select class="form-select" aria-label="Default select example" id="provincia" name="id_provincia">
+                  <option value="" selected>Seleccione una Provincia</option>
+                  {{#each provincias}}
+                  <option value="{{id_provincia}}">{{descripcion}}</option>
+                  {{/each}}
+                </select>
+              </div>
+              <div class="col-md-12">
+                <label for="localidad" class="form-label">Localidad</label>
+                <select class="form-select" aria-label="Default select example" id="localidad" name="id_localidad">
+                  <option value="" selected>Seleccione una Localidad</option>
+                  <!-- Aquí se agregarán dinámicamente las opciones de localidades -->
+                </select>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="calle" class="form-label">Calle</label>
+                  <input type="text" class="form-control" id="calle" placeholder="Calle" name="calle"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="numero" class="form-label">Número</label>
+                  <input type="text" class="form-control" id="numero" placeholder="Número" name="numero"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="col-md-6">
+            <fieldset class="border p-3 tamanio_datos">
+              <div class="row">
+                <div class="col-md-8">
+                  <legend class="h5">Datos de la Mascota:</legend>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    Sigue Perdido?
+                    <input type="checkbox" name="perdido" value="1">
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre_mascota" />
+                </div>
+                <div class="col-md-6">
+                  <label for="raza" class="form-label">Raza</label>
+                  <input type="text" class="form-control" id="raza" placeholder="Raza" name="raza" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="especie" class="form-label">Especie</label>
+                  <select class="form-select" aria-label="Default select example" name="id_especie">
+                    <option selected>Seleccione tipo de Especie</option>
+                    <option value="1">Perro</option>
+                    <option value="2">Gato</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="ojos" class="form-label">Color ojos</label>
+                  <input type="text" class="form-control" id="ojos" placeholder="Color ojos" name="ojos" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="pelaje_tipo" class="form-label">Pelaje Tipo</label>
+                  <input type="text" class="form-control" id="pelaje_tipo" placeholder="Pelaje Tipo" name="pelaje_tipo" />
+                </div>
+                <div class="col-md-6">
+                  <label for="pelaje_color" class="form-label"> Pelaje Color</label>
+                  <input type="text" class="form-control" id="pelaje_color" placeholder="Pejale Color" name="pelaje_color" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="tamanio" class="form-label">Tamaño</label>
+                  <input type="text" class="form-control" id="tamanio" placeholder="Tamaño" name="tamanio" />
+                </div>
+                <div class="col-md-6">
+                  <label for="edad" class="form-label">Edad</label>
+                  <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="fecha" class="form-label">Fecha Perdida:</label>
+                  <div class="input-group">
+                    <input id="perdida_perdida" name="perdida_perdida" class="form-control" type="date" />
+                    <span id="fechaPerdidaSelected"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="otras_caracteristicas">Otras Características</label>
+                <textarea class="form-control" id="caracteristicas" rows="2" name="otras_caracteristicas"></textarea>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary botonRegistrar">Registrar mascota perdida</button>
+        </div>
+        </br>
+        {{#if error}}
+        <div class="form-check d-flex justify-content-start mb-4">
+          <label class="form-check-label" for="form1Example3"> {{message}} </label>
+        {{/if}}
+      </form>
+
+    </div>
+  </div>
+  
+</section>
+
+<script src="/javascripts/cargarLocalidades.js"></script>

@@ -1,0 +1,182 @@
+</br>
+<section class="py-5 container formularioRegistro">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <form for="nombre" class="formulario row g-3 " action="/admin/mascotas/modificar" method="post" enctype="multipart/form-data">
+      
+        <input type="hidden" name="id_mascota" value="{{mascota.id_mascota}}">
+        <input type="hidden" name="id_contacto" value="{{mascota.id_contacto}}">
+        <input type="hidden" name="id_ubicacion" value="{{mascota.id_ubicacion}}">
+        <input type="hidden" name="id_localidad" value="{{mascota.id_localidad}}">
+
+        <h2>Registrar animal perdido</h2>
+
+        <div class="col-md-12 mb-3">
+          <label for="imagen" class="form-label">Selecciona una imagen:</label>
+          <input type="file" class="form-control-file" id="imagen" name="imagen" />
+        
+          {{#if mascota.img_id}}
+          <p>
+            <label class="form-label">
+              <input type="checkbox" name="img_delete" id="img_delete" value="1">¿Desea eliminar la imagen actual?
+            </label>
+            <input type="hidden" name="img_original" value="{{mascota.img_id}}">
+          </p>
+          {{/if}}
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset class="col-md-12 border p-3 mb-3 tamanio_datos">
+              <div class="row">
+                <div class="col-md-8">
+                  <legend class="h5">Datos del Contacto:</legend>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    Es el Dueño?
+                    <input type="checkbox" name="esDuenio" value="{{mascota.esDuenio}}" {{#ifCond mascota.esDuenio 1}}checked{{else}}{{/ifCond}}>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" value="{{mascota.nombre_contacto}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="apellido" class="form-label">Apellido</label>
+                  <input type="text" class="form-control" id="apellido" placeholder="Apellido" name="apellido" value="{{mascota.apellido_contacto}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="{{mascota.email}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input type="number" class="form-control" id="telefono" placeholder="Telefono" name="telefono" value="{{mascota.telefono}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="provincia" class="form-label">Provincia</label>
+                  <select class="form-select" aria-label="Default select example" name="id_provincia">
+                    <option>Seleccione una Provincia</option>
+                    <option {{#ifCond mascota.id_provincia 1}}selected{{else}}{{/ifCond}} value="1">Buenos Aires</option>
+                    <option {{#ifCond mascota.id_provincia 2}}selected{{else}}{{/ifCond}} value="2">Catamarca</option>
+                    <option {{#ifCond mascota.id_provincia 3}}selected{{else}}{{/ifCond}} value="3">Chaco</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="localidad" class="form-label">Localidad</label>
+                  <select class="form-select" aria-label="Default select example" name="id_localidad">
+                    <option selectedvalue="{{mascota.id_localidad}}">{{mascota.localidad}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="calle" class="form-label">Calle</label>
+                  <input type="text" class="form-control" id="calle" placeholder="Calle" name="calle" value="{{mascota.calle}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="numero" class="form-label">Número</label>
+                  <input type="text" class="form-control" id="numero" placeholder="Número" name="numero" value="{{mascota.numero}}"/>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="col-md-6">
+            <fieldset class="border p-3 tamanio_datos">
+              <div class="row">
+                <div class="col-md-8">
+                  <legend class="h5">Datos de la Mascota:</legend>
+                </div>
+                <div class="col-md-4">
+                  <label>
+                    Sigue Perdido?
+                    <input type="checkbox" name="perdido" value="1" {{#ifCond mascota.perdido 1}}checked{{else}}{{#ifCond mascota.perdido 'Si'}}checked{{else}}{{/ifCond}}{{/ifCond}}>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre_mascota" value="{{mascota.nombre_mascota}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="raza" class="form-label">Raza</label>
+                  <input type="text" class="form-control" id="raza" placeholder="Raza" name="raza" value="{{mascota.raza}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="especie" class="form-label">Especie</label>
+                  <select class="form-select" aria-label="Default select example" name="id_especie">
+                    <option selected>Seleccione tipo de Especie</option>
+                    <option {{#ifCond mascota.id_especie 1}}selected{{else}}{{/ifCond}}  value="1">Perro</option>
+                    <option {{#ifCond mascota.id_especie 2}}selected{{else}}{{/ifCond}}  value="2">Gato</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="ojos" class="form-label">Color ojos</label>
+                  <input type="text" class="form-control" id="ojos" placeholder="Color ojos" name="ojos" value="{{mascota.ojos}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="pelaje_tipo" class="form-label">Pelaje Tipo</label>
+                  <input type="text" class="form-control" id="pelaje_tipo" placeholder="Pelaje Tipo" name="pelaje_tipo" value="{{mascota.pelaje_tipo}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="pelaje_color" class="form-label"> Pelaje Color</label>
+                  <input type="text" class="form-control" id="pelaje_color" placeholder="Pejale Color" name="pelaje_color" value="{{mascota.pelaje_color}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <label for="tamanio" class="form-label">Tamaño</label>
+                  <input type="text" class="form-control" id="tamanio" placeholder="Tamaño" name="tamanio" value="{{mascota.tamanio}}"/>
+                </div>
+                <div class="col-md-6">
+                  <label for="edad" class="form-label">Edad</label>
+                  <input type="text" class="form-control" id="edad" placeholder="Edad" name="edad" value="{{mascota.edad}}"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label for="fecha" class="form-label">Fecha Perdida:</label>
+                  <div class="input-group">
+                    <input id="perdida_perdida" name="perdida_perdida" class="form-control" type="date"/>
+                    <span id="fechaPerdidaSelected">{{formatDate mascota.fecha_perdido}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="otras_caracteristicas">Otras Características</label>
+                <textarea class="form-control" id="caracteristicas" rows="2" name="otras_caracteristicas" value="{{mascota.otras_caracteristicas}}"></textarea>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary botonRegistrar">Actualizar mascota perdida</button>
+        </div>
+        </br>
+        {{#if error}}
+        <div class="form-check d-flex justify-content-start mb-4">
+          <label class="form-check-label" for="form1Example3"> {{message}} </label>
+        {{/if}}
+      </form>
+
+    </div>
+  </div>
+</section>

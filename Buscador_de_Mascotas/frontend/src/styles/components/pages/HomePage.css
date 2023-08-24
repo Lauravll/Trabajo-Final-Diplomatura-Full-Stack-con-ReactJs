@@ -1,0 +1,11 @@
+.carousel-item {
+  width: 100%;
+  /*width you want*/
+  height: 450px;
+  /*height you want*/
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+}

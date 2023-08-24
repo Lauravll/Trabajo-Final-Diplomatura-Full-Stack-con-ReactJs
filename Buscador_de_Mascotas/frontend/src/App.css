@@ -1,0 +1,12 @@
+.color-footer {
+  color: #1a0a3e;
+}
+
+body {
+  background-image: url('../public/img/huellitas-fondo_dos.jpg');
+  font-family: 'Open Sans', sans-serif;
+}
+
+nav ul li .active {
+  background-color: rgb(101, 101, 88);
+}
